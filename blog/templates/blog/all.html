@@ -1,0 +1,41 @@
+{% extends 'blog/base.html' %}
+
+
+{% block title %}
+<title>Posts page {{ page.number }} </title>
+{% endblock title %}
+
+
+{% block content %}
+    <div class="all-posts">
+        {% for obj in page %}
+        <div class="post">
+            <h1> {{ obj.title }} </h1>
+            <p> {{ obj.body|truncatechars:60 }} </p>
+            <a href="{{ obj.get_absolute_url }}">Details</a>
+            <h2> By {{ obj.author }} </h2>
+            <h2> created {{ obj.created }} </h2>
+            <a href="{% url 'blog:share' obj.id %}">Share</a>
+            <a href="{% url 'blog:delete' obj.id %}">Delete</a>
+            <a href="{% url 'blog:edit' obj.id %}">Edit</a>
+        </div>
+        {% endfor %}
+    </div>
+
+
+    <div class="paginator-block">
+        {% if page.has_previous %}
+        <a class='page-link' href="?page={{ page.number|add:'-1' }}">Previous</a> <!-- page.previous_page_number -->
+        {% endif %}
+
+        <h2>{{ page.number }} of {{ page.paginator.num_pages }} </h2>
+
+        {% if page.has_next %}
+        <a href="?page={{ page.number|add:'1' }}">Next</a> <!-- page.next_page_number -->
+        {% endif %}
+    </div>
+
+
+
+
+{% endblock content %}

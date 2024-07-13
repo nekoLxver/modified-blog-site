@@ -1,0 +1,25 @@
+{% extends 'blog/base.html' %}
+
+
+{% block title %}
+<title>Share post {{ post.id }} </title>
+{% endblock title %}
+
+
+{% block content %}
+
+
+    {% if sent %}
+        <h1>Email was succesfully sent!</h1>
+        <a href="{% url 'blog:all' %}">Go home</a>
+    {% else %}
+        <form method="post" novalidate>
+            {{ form.as_p }}
+            {% csrf_token %}
+            <input type="submit" value="Send e-mail">
+        </form>
+    {% endif %}
+
+
+
+{% endblock content %}

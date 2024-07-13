@@ -1,0 +1,18 @@
+{% extends 'blog/base.html' %}
+
+
+{% block title %}
+<title>Details of post {{ post.id }} </title>
+{% endblock title %}
+
+
+{% block content %}
+
+        <div class="post">
+            <h1> {{ post.title }} </h1>
+            <p> {{ post.body}} </p>
+            <h2> By {{ post.author }} </h2>
+            <h2> created {{ post.created }} </h2>
+        </div>
+
+{% endblock content %}

@@ -1,0 +1,17 @@
+{% extends 'blog/base.html' %}
+
+
+{% block title %}
+<title>Details of post {{ post.id }} </title>
+{% endblock title %}
+
+
+{% block content %}
+
+    <form method="get">
+        <input type="text" name="title" placeholder="change title...">
+        <input type="text" name="body" placeholder="change text...">
+        <button type="submit">Confirm</button>
+    </form>
+
+{% endblock content %}

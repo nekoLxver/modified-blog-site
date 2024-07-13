@@ -1,0 +1,19 @@
+{% extends 'blog/base.html' %}
+
+
+{% block title %}
+<title>Delete post {{ post.id }} </title>
+{% endblock title %}
+
+
+{% block content %}
+        <div class="post">
+            <h1> Are you sure you want to delete:</h1>
+            <h2> {{ post.title }} </h2>
+            <p> {{ post.body}} </p>
+            <h2> By {{ post.author }} </h2>
+            <h2> created {{ post.created }} </h2>
+            <button><a href="?flag=True">Delete</a></button>
+            <button><a href="{% url 'blog:all' %}">Go home</a></button>
+        </div>
+{% endblock content %}
